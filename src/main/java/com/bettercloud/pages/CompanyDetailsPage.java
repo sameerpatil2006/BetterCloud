@@ -6,6 +6,8 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVPrinter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -18,28 +20,40 @@ import java.util.Map;
 
 public class CompanyDetailsPage extends TestBaseSetup {
 
-    private static WebElement aboutHeaderTag = driver.findElement(By.xpath("//*[contains(text(),'About BetterCloud')]"));
-    private static WebElement aboutHeader = driver.findElement(By.cssSelector("div.company-marquee>div.content>div.header"));
-    private static WebElement board = driver.findElement(By.cssSelector("div.horizontal-tabs div.tab-list__inner>div:nth-of-type(2)"));
-    private static WebElement ourAwards = driver.findElement(By.cssSelector("div.our-awards__inner"));
+    @FindBy(xpath = "//*[contains(text(),'About BetterCloud')]")
+    WebElement aboutHeaderTag;
 
-    public static String getHeaderText(){
+    @FindBy(css = "div.company-marquee>div.content>div.header")
+    WebElement aboutHeader;
+
+
+    @FindBy(css = "div.horizontal-tabs div.tab-list__inner>div:nth-of-type(2)")
+    WebElement board;
+
+    @FindBy(css = "div.our-awards__inner")
+    WebElement ourAwards;
+
+    // Initializing the Page Objects:
+    public CompanyDetailsPage() {
+        PageFactory.initElements(driver, this);
+    }
+
+    public String getHeaderText(){
         CommonMethods.waitUntilVisible(explicit_wait_time,aboutHeader);
         return aboutHeader.getText();
     }
 
-    public static void goToBoard(){
+    public void goToBoard(){
         CommonMethods.waitUntilElementClickable(explicit_wait_time, board);
         board.click();
     }
 
-    public static String getHeadingTag(){
+    public String getHeadingTag(){
         CommonMethods.waitUntilVisible(explicit_wait_time,aboutHeaderTag);
         return aboutHeaderTag.getTagName();
-
     }
 
-    public static LinkedHashMap<String, String> getBoardMembersNames() {
+    public LinkedHashMap<String, String> getBoardMembersNames() {
         LinkedHashMap<String, String> nameDescriptionMap = new LinkedHashMap<>();
         CommonMethods.scrollToElement(ourAwards);
         CommonMethods.waitUntilElementClickable("div.board-members>div:nth-of-type(6)",20);
@@ -52,7 +66,7 @@ public class CompanyDetailsPage extends TestBaseSetup {
         return nameDescriptionMap;
     }
 
-    public static void exportDataToCsv(LinkedHashMap<String, String> map){
+    public void exportDataToCsv(LinkedHashMap<String, String> map){
         final String CSV_FILE = "./export.csv";
         BufferedWriter writer = null;
         CSVPrinter csvPrinter = null;
@@ -66,6 +80,5 @@ public class CompanyDetailsPage extends TestBaseSetup {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 }

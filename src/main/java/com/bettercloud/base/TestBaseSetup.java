@@ -26,7 +26,6 @@ public class TestBaseSetup {
        }catch (Exception ex){
             ex.printStackTrace();
        }
-
     }
 
     public static void initialization() {

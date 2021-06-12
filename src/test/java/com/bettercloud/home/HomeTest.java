@@ -6,14 +6,18 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 public class HomeTest extends TestBaseSetup{
+
+    HomePage homePage;
+
     @BeforeMethod
     public void setUp(){
         initialization();
+        homePage = new HomePage();
     }
 
     @Test
     public void testHomePage(){
-        Assert.assertTrue(HomePage.isBetterCloudLogoVisible());
+        Assert.assertTrue(homePage.isBetterCloudLogoVisible());
     }
 
     @AfterMethod

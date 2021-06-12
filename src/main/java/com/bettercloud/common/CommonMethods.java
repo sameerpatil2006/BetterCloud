@@ -27,21 +27,16 @@ public class CommonMethods extends TestBaseSetup {
     }
 
     public static void waitUntilElementClickable(String webElement, int secondsToWait) {
-            if (webElement != null) {
-                FluentWait<WebDriver> w = new FluentWait<>(driver)
-                        .ignoring(NoSuchElementException.class).withTimeout(Duration.ofSeconds(secondsToWait));
-                w.until(ExpectedConditions.elementToBeClickable(By.cssSelector(webElement)));
-            }
-    }
-
-    public static void waitUntilElementInvisible(int secondsToWait, WebElement webElement){
-        wait = new WebDriverWait(driver,secondsToWait);
-        wait.until(ExpectedConditions.invisibilityOf(webElement));
+        if (webElement != null) {
+            FluentWait<WebDriver> w = new FluentWait<>(driver)
+                    .ignoring(NoSuchElementException.class)
+                    .withTimeout(Duration.ofSeconds(secondsToWait));
+            w.until(ExpectedConditions.elementToBeClickable(By.cssSelector(webElement)));
+        }
     }
 
     public static void scrollToElement(WebElement webElement) {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].scrollIntoView(true);", webElement);
     }
-
 }

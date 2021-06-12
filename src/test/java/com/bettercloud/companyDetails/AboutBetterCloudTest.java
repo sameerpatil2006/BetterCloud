@@ -11,18 +11,23 @@ import org.testng.annotations.Test;
 
 public class AboutBetterCloudTest extends TestBaseSetup {
 
+    HomePage homePage;
+    CompanyDetailsPage companyDetailsPage;
+
     @BeforeMethod
     public void setUp(){
         initialization();
-        HomePage.goToCompany();
+        homePage = new HomePage();
+        companyDetailsPage = new CompanyDetailsPage();
+        homePage.goToCompany();
     }
 
     @Test
     public void extractMemberData() {
-        Assert.assertEquals(CompanyDetailsPage.getHeaderText(),"About BetterCloud");
-        Assert.assertEquals(CompanyDetailsPage.getHeadingTag(),"h1");
-        CompanyDetailsPage.goToBoard();
-        CompanyDetailsPage.exportDataToCsv(CompanyDetailsPage.getBoardMembersNames());
+        Assert.assertEquals(companyDetailsPage.getHeaderText(),"About BetterCloud");
+        Assert.assertEquals(companyDetailsPage.getHeadingTag(),"h1");
+        companyDetailsPage.goToBoard();
+        companyDetailsPage.exportDataToCsv(companyDetailsPage.getBoardMembersNames());
     }
 
     @Test

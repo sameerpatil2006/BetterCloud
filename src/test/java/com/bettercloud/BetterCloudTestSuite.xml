@@ -8,6 +8,7 @@
     <test name="Better Cloud Tests">
         <classes>
             <class name="com.bettercloud.companyDetails.AboutBetterCloudTest"/>
+            <class name="com.bettercloud.home.HomeTest"/>
         </classes>
     </test>
 </suite>
