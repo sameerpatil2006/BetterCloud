@@ -16,7 +16,7 @@ import java.util.NoSuchElementException;
 
 /**
  * @author Sameer Patil
- * This method provides common methods which are common through out project
+ * This class provides common methods which are common through out project
  */
 public class CommonMethods extends TestBaseSetup {
 
