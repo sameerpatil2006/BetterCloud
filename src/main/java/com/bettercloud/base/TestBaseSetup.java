@@ -74,7 +74,6 @@ public class TestBaseSetup {
                 browserLocation += "chromedriver";
                 break;
         }
-
         if (getOperatingSystem().equals("windows")) {
             browserLocation += ".exe";
         }
@@ -93,13 +92,15 @@ public class TestBaseSetup {
 
         if (operatingSystem.toLowerCase().startsWith("windows")) {
             operatingSystem = "windows";
-        } else {
-            if (operatingSystem.toLowerCase().startsWith("linux")) {
+        } else if (operatingSystem.toLowerCase().startsWith("linux")) {
                 operatingSystem = "linux";
-            } else {
-                operatingSystem = "other";
             }
-        }
+            else if (operatingSystem.toLowerCase().startsWith("mac")){
+                operatingSystem = "mac";
+            }
+            else {
+                System.out.println("This Operating system is not supported");
+            }
         return operatingSystem;
     }
 }
