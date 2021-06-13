@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="SmartSheet Test Suite" verbose="1">
+<suite name="BetterCloud Test Suite" verbose="1">
     <listeners>
         <listener class-name="com.bettercloud.utility.TestListener"/>
         <listener class-name="com.bettercloud.utility.ExtentReporterNG" />

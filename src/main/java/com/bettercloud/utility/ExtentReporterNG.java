@@ -1,5 +1,6 @@
 package com.bettercloud.utility;
 
+import com.bettercloud.common.CommonMethods;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
@@ -17,6 +18,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author Sameer Patil
+ * This class generates extent report with timestamps, logs and screenshots. The report is generated
+ * in test-output folder with BetterCloud.html name
+ */
 public class ExtentReporterNG implements IReporter {
     private ExtentReports extent;
 
@@ -55,7 +61,7 @@ public class ExtentReporterNG implements IReporter {
                     test.assignCategory(group);
 
                 if (result.getThrowable() != null) {
-                    test.log(status, test.addScreenCapture(System.getProperty("user.dir")+ "/screenshots/" + "ScreenShot" + System.currentTimeMillis() +".jpeg"));
+                    test.log(status, test.addScreenCapture(System.getProperty("user.dir")+ "/screenshots/" + "ScreenShot_" + CommonMethods.getTimeStamp() +".jpeg"));
                     test.log(status, result.getThrowable());
                 } else {
                     test.log(status, "Test " + status.toString().toLowerCase()

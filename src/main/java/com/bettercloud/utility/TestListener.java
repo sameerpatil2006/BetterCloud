@@ -6,6 +6,10 @@ import org.testng.TestListenerAdapter;
 
 import java.io.IOException;
 
+/**
+ * @author Sameer Patil
+ * This class is listener class for tests, it tells driver to take screenshort on test failure.
+ */
 public class TestListener extends TestListenerAdapter {
     @Override
     public void onTestFailure(ITestResult result) {

@@ -6,6 +6,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * @author Sameer Patil
+ * This is a page class for Home Page, it provides diffeent webelements present on home page and functions
+ * to navigate through that page
+ */
 public class HomePage extends TestBaseSetup {
 
     @FindBy(css = "a.site-header__logo")
@@ -14,7 +19,9 @@ public class HomePage extends TestBaseSetup {
     @FindBy(linkText = "Company")
     WebElement company;
 
-    // Initializing the Page Objects:
+    /**
+     * Initializing the Page Objects
+     */
     public HomePage() {
         PageFactory.initElements(driver, this);
     }
