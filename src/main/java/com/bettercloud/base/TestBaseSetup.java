@@ -1,5 +1,6 @@
 package com.bettercloud.base;
 
+import org.apache.commons.lang3.SystemUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -10,8 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @author Sameer Patil
- * This is base class which reads properties from property file and initializes browser.
- * Currently this class supports running from linux machine only. Running on windows machine might throw file not found exception.
+ * This is base class which reads properties from property file and initializes browser according to operating system.
  */
 public class TestBaseSetup {
 
@@ -42,10 +42,10 @@ public class TestBaseSetup {
     public static void initialization() {
 
         if (browserName.equals("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
+            System.setProperty("webdriver.chrome.driver", getDriverLocation("chrome"));
             driver = new ChromeDriver();
         } else if (browserName.equals("firefox")) {
-            System.setProperty("webdriver.gecko.driver", "drivers/geckodriver");
+            System.setProperty("webdriver.gecko.driver", getDriverLocation("firefox"));
             driver = new FirefoxDriver();
         }
 
@@ -53,5 +53,53 @@ public class TestBaseSetup {
         driver.manage().deleteAllCookies();
         driver.manage().timeouts().implicitlyWait(IMPLICIT_WAIT_TIME, TimeUnit.SECONDS);
         driver.get(url);
+    }
+
+    /**
+     * This method returns driver location according to operating system
+     * on which test is running
+     * @param browserType
+     * @return
+     */
+    public static String getDriverLocation(String browserType) {
+        String browserLocation =  System.getProperty("user.dir")+ "/drivers/";
+
+        switch (browserType.toLowerCase()) {
+            case "firefox":
+                browserLocation += "geckodriver";
+                break;
+
+            case "chrome":
+            default:
+                browserLocation += "chromedriver";
+                break;
+        }
+
+        if (getOperatingSystem().equals("windows")) {
+            browserLocation += ".exe";
+        }
+        if (getOperatingSystem().equals("mac")) {
+            browserLocation += "mac";
+        }
+        return browserLocation;
+    }
+
+    /**
+     * This method returns operating system on which test is running
+     * @return
+     */
+    private static String getOperatingSystem() {
+        String operatingSystem = SystemUtils.OS_NAME;
+
+        if (operatingSystem.toLowerCase().startsWith("windows")) {
+            operatingSystem = "windows";
+        } else {
+            if (operatingSystem.toLowerCase().startsWith("linux")) {
+                operatingSystem = "linux";
+            } else {
+                operatingSystem = "other";
+            }
+        }
+        return operatingSystem;
     }
 }
