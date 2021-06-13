@@ -1,4 +1,4 @@
-package com.bettercloud.common;
+package com.bettercloud.utility;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -55,12 +55,12 @@ public class ExtentReporterNG implements IReporter {
                     test.assignCategory(group);
 
                 if (result.getThrowable() != null) {
+                    test.log(status, test.addScreenCapture(System.getProperty("user.dir")+ "/screenshots/" + "ScreenShot" + System.currentTimeMillis() +".jpeg"));
                     test.log(status, result.getThrowable());
                 } else {
                     test.log(status, "Test " + status.toString().toLowerCase()
                             + "ed");
                 }
-
                 extent.endTest(test);
             }
         }

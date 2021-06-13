@@ -1,8 +1,10 @@
 package com.bettercloud.base;
 
+import com.bettercloud.utility.WebEventListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.io.FileReader;
 import java.util.Properties;
@@ -18,7 +20,7 @@ public class TestBaseSetup {
 
     public TestBaseSetup()  {
        try{
-           FileReader reader=new FileReader(System.getProperty("user.dir")+ "/src/main/java/com/bettercloud/base/configs.properties");
+           FileReader reader=new FileReader(System.getProperty("user.dir")+ "/src/main/java/com/bettercloud/properties/configs.properties");
            Properties prop = new Properties();
            prop.load(reader);
            browsername = prop.getProperty("browser");
