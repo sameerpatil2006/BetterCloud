@@ -1,8 +1,8 @@
 # BetterCloud Assignment
 
-Selenium Page Object Model using TestNG Framework
+**Selenium Page Object Model using TestNG Framework**
 
-Setup instructions for my project are as follows: 
+**Setup instructions for my project are as follows:**
 1.  Git Setup:
     1.  To clone the repo from terminal :
     2.  Open terminal.
@@ -20,7 +20,7 @@ Setup instructions for my project are as follows:
     2. Right click on BetterCloudTestSuite.xml and select run. It will run both the testclasses and generate Extent report after execution. 
     3. To run in terminal open project directory and type command 'gradle clean build test' this will execute BetterCloudTestSuite.xml and generate extent report.
 
-My approach to this Project:
+**My approach to this Project:**
  
 1.  src/main/java/com/bettercloud:
     1.  base: This contains “TestBaseSetup” class that all page objects inherit to. This base class reads the config file, initializes webdriver and sets global time limit before the tests start. 
@@ -38,7 +38,7 @@ My approach to this Project:
 5.  Project/screenshots: This directory stores all screenshots taken during execution with timestamp in its name.
 6.  Project/export.csv: This csv is genrated from extractMemberData test method and it contains member name and description
 
-CI/CD uisng Jenkins :
+**CI/CD uisng Jenkins :**
 
 1.  Prerequisite:
     1.  Running instance of Jenkins Server on Linux or Mac OS
@@ -55,10 +55,20 @@ CI/CD uisng Jenkins :
 5.  Limitation:
     1. Currently works only for chrome but easily scalable for other browsers. 
     
-Extent Reports from Test run :
+**Jenkins Setup Screenshots :**
 
-![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/ExtentReport_images/Screenshot%20from%202021-06-13%2013-18-53.png?raw=true "Test Run Overview")
+![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/screenshots/jenkins_screenshots/General1.png?raw=true "General Setup 1")
 
-![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/ExtentReport_images/Screenshot%20from%202021-06-13%2013-18-03.png?raw=true "All Tests")
+![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/screenshots/jenkins_screenshots/General2.png?raw=true "General Setup 2")
 
-![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/ExtentReport_images/Screenshot%20from%202021-06-13%2013-14-21.png?raw=true "Failed Test Log")
+![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/screenshots/jenkins_screenshots/Pipeline.png?raw=true "Configure jenkins file and branch")
+
+![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/screenshots/jenkins_screenshots/Trigger.png?raw=true "Build Triggers")
+
+**Extent Reports from Test run :**
+
+![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/screenshots/extentReport_screenshots/Test%20Execution%20Overview.png?raw=true "Test Run Overview")
+
+![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/screenshots/extentReport_screenshots/All%20Tests.png?raw=true "All Tests")
+
+![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/screenshots/extentReport_screenshots/Failed%20Test%20Logs.png?raw=true "Failed Test Log")
