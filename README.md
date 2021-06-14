@@ -54,6 +54,7 @@ CI/CD uisng Jenkins :
     3.  After test execution is complete test report link is added to jenkins. 
 5.  Limitation:
     1. Currently works only for chrome but easily scalable for other browsers. 
+    
 Extent Reports from Test run :
 
 ![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/ExtentReport_images/Screenshot%20from%202021-06-13%2013-18-53.png?raw=true "Test Run Overview")
