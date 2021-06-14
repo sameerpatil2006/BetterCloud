@@ -38,6 +38,21 @@ My approach to this Project:
 5.  Project/screenshots: This directory stores all screenshots taken during execution with timestamp in its name.
 6.  Project/export.csv: This csv is genrated from extractMemberData test method and it contains member name and description
 
+CI/CD uisng Jenkins :
+
+1.  Prerequisite :
+    1.  Running instance of Jenkins Server
+    2.  Jenkins node should be able to run docker command 
+2.  Setup:
+    1.  Create new jenkins pipeline job and configure it as per screenshots below (also added screenshots in project under BetterCloud/screenshot/jenkins)
+3.  Working:
+    1.  This jenkins job checks for new commits every hour and runs if there any changes.
+    2.  This jenkins job can also be triggered manually.
+4.  Approach :
+    1.  Created one docker file from Selenium-Standalone-latest image, that file has configurations needed to run our tests.
+    2.  Also, created jenkins file, on running jenkins job this file creates image from docker file and starts new container of that image and runs gradle command to start test
+    3.  After test execution is complete test report link is added to jenkins. 
+    
 Extent Reports from Test run :
 
 ![Alt text](https://github.com/sameerpatil2006/BetterCloud/blob/master/ExtentReport_images/Screenshot%20from%202021-06-13%2013-18-53.png?raw=true "Test Run Overview")
