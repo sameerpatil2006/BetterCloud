@@ -72,7 +72,7 @@ public class CompanyDetailsPage extends TestBaseSetup {
      * Using different fluent waits for dynamic loading of page, avoiding thread.sleep which will halt complete execution
      * @return nameDescriptionMap
      */
-    public LinkedHashMap<String, String> getBoardMembersNames() throws InterruptedException {
+    public LinkedHashMap<String, String> getBoardMembersNames() {
         LinkedHashMap<String, String> nameDescriptionMap = new LinkedHashMap<>();
         CommonMethods.scrollToElement(lastBoardMember);
         CommonMethods.waitUntilElementClickable("div.board-members>div:nth-of-type(1)",explicit_wait_time);
@@ -92,8 +92,8 @@ public class CompanyDetailsPage extends TestBaseSetup {
      */
     public void exportDataToCsv(LinkedHashMap<String, String> map){
         final String CSV_FILE = "./export.csv";
-        BufferedWriter writer = null;
-        CSVPrinter csvPrinter = null;
+        BufferedWriter writer;
+        CSVPrinter csvPrinter;
         try {
             writer = Files.newBufferedWriter(Paths.get(CSV_FILE));
             csvPrinter = new CSVPrinter(writer, CSVFormat.DEFAULT.withHeader("Name", "Description"));

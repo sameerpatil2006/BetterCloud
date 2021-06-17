@@ -32,7 +32,7 @@ public class AboutBetterCloudTest extends TestBaseSetup {
      * methods to extract and covert board members to CSV
      */
     @Test
-    public void extractMemberData() throws InterruptedException {
+    public void extractMemberData() {
         Assert.assertEquals(companyDetailsPage.getHeaderText(),"About BetterCloud");
         Assert.assertEquals(companyDetailsPage.getHeadingTag(),"h1");
         companyDetailsPage.goToBoard();
